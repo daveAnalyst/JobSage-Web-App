@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobSage MVP</title>
+    <!-- Link to CSS (optional for now) -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <style>
+        /* Basic styling for clarity */
+        body { font-family: sans-serif; padding: 20px; }
+        h1, h2, h3 { margin-top: 30px; }
+        textarea { width: 95%; margin-bottom: 10px; }
+        button { padding: 8px 15px; margin-right: 10px; cursor: pointer; }
+        #feedback-display, #negotiation-output {
+            margin-top: 15px; padding: 10px; border: 1px solid #ccc;
+            background-color: #f9f9f9; white-space: pre-wrap; /* Preserve formatting */
+        }
+        .hidden { display: none; } /* Class to hide elements initially */
+    </style>
+</head>
+<body>
+    <h1>Welcome to JobSage MVP!</h1>
+
+    <!-- Interview Section -->
+    <div id="interview-section">
+        <h2>Mock Interview</h2>
+        <div>
+            <label for="cv-input">Paste CV (Optional - for Job Recs):</label><br>
+            <textarea id="cv-input" rows="6" placeholder="Paste your full CV text here..."></textarea>
+        </div>
+        <button id="start-btn">Start New Interview (3 Questions)</button>
+        <div id="progress-display" style="margin-top: 10px; font-style: italic;"></div>
+
+        <div id="question-area" class="hidden"> <!-- Hide initially -->
+            <h3 id="question-header">Question X/Y</h3>
+            <p id="question-text" style="font-weight: bold;"></p>
+            <p id="question-details" style="font-size: 0.9em; color: grey;"></p>
+            <label for="answer-input">Your Answer:</label><br>
+            <textarea id="answer-input" rows="7"></textarea><br>
+            <button id="submit-btn">Submit Answer</button>
+        </div>
+
+        <div id="evaluation-area" class="hidden"> <!-- Hide initially -->
+            <h3>Evaluation & Feedback</h3>
+            <div id="points-display"></div>
+            <div id="feedback-display"></div>
+            <div id="follow-up-display" style="margin-top: 10px; font-weight: bold;"></div>
+        </div>
+
+         <div id="interview-complete-message" class="hidden" style="margin-top: 20px; padding: 15px; background-color: #e0ffe0; border: 1px solid green;">
+            <h3>Interview Complete!</h3>
+            <p>See below for analysis (or check full notebook simulation for more details).</p>
+            <div id="final-points-display"></div>
+            <div id="final-benchmark-display"></div>
+            </div>
+    </div>
+
+    <hr>
+
+    <!-- Negotiation Section -->
+    <div id="negotiation-section">
+        <h2>Salary Negotiation Simulator</h2>
+        <div>
+            <label for="job-title-input">Job Title:</label>
+            <select id="job-title-input">
+                <option>Data Scientist</option>
+                <option>ML Engineer</option>
+                <option>Data Analyst</option>
+                <option>Research Scientist</option>
+                <option>Data Engineer</option>
+                <option>Software Engineer</option>
+            </select>
+        </div>
+        <div>
+            <label for="years-exp-input">Years of Experience:</label>
+            <input type="number" id="years-exp-input" value="3" min="0" max="20" step="1">
+        </div>
+         <div>
+            <label for="current-salary-input">Current Approx Salary ($):</label>
+            <input type="number" id="current-salary-input" value="100000" min="0" step="1000">
+        </div>
+        <button id="negotiate-btn">Simulate Negotiation</button>
+        <div id="negotiation-output" style="margin-top: 15px; padding: 10px; border: 1px solid #ccc; background-color: #f0f0f0; white-space: pre-wrap;">
+            *Negotiation simulation & feedback will appear here...*
+        </div>
+    </div>
+
+    <!-- Link to Basic JS (Create this file next) -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
